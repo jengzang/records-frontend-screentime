@@ -1,26 +1,27 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Rankings from './pages/Rankings';
+import Trends from './pages/Trends';
+import Categories from './pages/Categories';
+import CrossDeviceAnalysis from './pages/CrossDeviceAnalysis';
+import WorkLifeBalance from './pages/WorkLifeBalance';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          屏幕使用时间
-        </h1>
-        <p className="text-gray-600 mb-4">
-          手机和电脑屏幕使用时间分析
-        </p>
-        <button
-          onClick={() => setCount((count) => count + 1)}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-        >
-          计数: {count}
-        </button>
-      </div>
-    </div>
-  )
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rankings" element={<Rankings />} />
+          <Route path="/trends" element={<Trends />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/cross-device" element={<CrossDeviceAnalysis />} />
+          <Route path="/work-life-balance" element={<WorkLifeBalance />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
 }
 
-export default App
+export default App;
